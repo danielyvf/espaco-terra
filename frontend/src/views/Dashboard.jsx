@@ -9,21 +9,19 @@ import '../components/responsivo.css';
 export default function DashboardContainer() {
   const [dadosSolares, setDadosSolares] = useState([]);
   const [desastresNaturais, setDesastresNaturais] = useState([]);
-  // 1. Criamos um estado para controlar se a API terminou de carregar
+  // 1. Cria um estado para controlar se a API terminou de carregar
   const [carregandoDados, setCarregandoDados] = useState(true);
 
-  useEffect(() => {
-    axios.get('http://localhost:8000/api/dados-cruzados/')
-      .then(resposta => {
-        setDadosSolares(resposta.data.dados_solares || []);
-        setDesastresNaturais(resposta.data.desastres_naturais || resposta.data.desastres_naturais || []); 
-      })
-      .catch(erro => console.error("Erro ao conectar com o Django:", erro))
-      .finally(() => {
-        // Quando a requisição termina (com sucesso ou erro), encerra o loading
-        setCarregandoDados(false);
-      });
-  }, []);
+const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:8000';
+
+useEffect(() => {
+  // variável dinâmica:
+  axios.get(`${API_URL}/api/dados-cruzados/`)
+    .then(resposta => {
+      setDadosSolares(resposta.data.dados_solares || []);
+      setDesastresNaturais(resposta.data.desastres_naturais || []);
+    })
+}, []);
 
   // Se a API ainda estiver carregando (ou o Render estiver acordando), exibe a tela de loading
   if (carregandoDados) {
