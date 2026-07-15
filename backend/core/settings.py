@@ -73,7 +73,5 @@ STATIC_URL = 'static/'
 
 # Permite que o React acesse o Django durante o desenvolvimento local
 CORS_ALLOWED_ORIGINS = [
-    "http://localhost:3000",  # Porta padrão do React antigo (Create React App)
-    "http://localhost:5173",  # Porta padrão do React moderno (Vite)
-    "https://projeto-geofisica.vercel.app",
+    "https://espaco-terra-m69d.vercel.app/",
     ]
