@@ -12,7 +12,7 @@ DEBUG = os.getenv('DEBUG', 'False') == 'True'
 
 # Define quem pode acessar o servidor localmente
 # Permite rodar localmente e também no endereço que o Render vai dar
-ALLOWED_HOSTS = ['https://espaco-terra.onrender.com', 'localhost', '127.0.0.1']
+ALLOWED_HOSTS = ['espaco-terra.onrender.com', 'localhost', '127.0.0.1']
 
 # Configuração padrão do Banco de Dados (SQLite)
 DATABASES = {
