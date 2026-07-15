@@ -1,0 +1,92 @@
+ /* REGRAS DE RESPONSIVIDADE PARA TELAS MENORES (ATÉ 900px - Tablets e Celulares) */
+@media (max-width: 900px) {
+
+  /* Menu Superior */
+  nav {
+    flex-direction: column !important; /* Passa o menu de horizontal para vertical */
+    height: auto !important;           /* Permite que o menu cresça para acomodar os links */
+    padding: 15px !important;
+    position: relative !important;     /* Evita que ele cubra o conteúdo em telas pequenas */
+  }
+  
+  nav div {
+    margin-top: 10px;
+    gap: 15px !important;              /* Aproxima os links para caberem lado a lado */
+  }
+
+  /* Reduz o espaçamento do topo do site que antes compensava o menu fixo */
+  div[style*="paddingTop: '90px'"] {
+    padding-top: 0 !important;
+  }
+
+  /* Correção do Título Gigante com Margem Negativa */
+  /* Remove a margem de -680px que empurra o título para fora da tela do celular */
+  h1[style*="fontFamily: '\"Syncopate\", sans-serif'"] {
+    font-size: 2.2rem !important;      /* Diminui o texto para não estourar a tela */
+    margin: 40px 0 20px 0 !important;  /* Zera a margem lateral e centraliza o espaçamento */
+    align-self: center !important;
+    text-align: center !important;
+  }
+
+  /* Reorganização do Globo e do Filtro */
+  /* Transforma o layout lado a lado (Row) em uma coluna empilhada (Column) */
+  section[style*="display: 'flex'"][style*="flexDirection: 'row'"] {
+    flex-direction: column !important;
+    padding: 15px !important;
+  }
+  
+
+  /* Faz o painel lateral do filtro ocupar a largura total da tela */
+  div[style*="width: '380px'"] {
+    width: 100% !important;
+    box-sizing: border-box;
+  }
+
+  /* Reorganização do Gráfico de Análise */
+  /* Empilha o gráfico e os textos explicativos verticalmente */
+  div[style*="display: 'flex'"][style*="flexDirection: 'row'"][style*="justifyContent: 'center'"] {
+    flex-direction: column !important;
+  }
+
+  /* Reorganização dos Artigos Científicos */
+  /* Passa os dois blocos de artigos (lado a lado no PC) para um abaixo do outro no celular */
+  section[style*="padding: '50px 40px'"] div[style*="display: 'flex'"] {
+    flex-direction: column !important;
+    padding: 10px !important;
+  }
+}
+
+@media (max-width: 650px) {
+  
+  html, body, #root, div[style*="minHeight: '100vh'"] {
+    width: 100% !important;
+    min-width: 0 !important; /* Remove qualquer trava de largura mínima invisível */
+    overflow-x: hidden !important; /* Evita que a página crie uma barra de rolagem horizontal */
+  }
+
+  /* Flexibiliza a seção do Globo e do Painel Lateral */
+  section[style*="padding: '40px'"] {
+    padding: 10px !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  /* O painel lateral (Filtro Geográfico) estava travado em 380px fixos. */
+  div[style*="width: '380px'"] {
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  /* Ajusta o tamanho dos inputs para não estourarem */
+  input[type="text"] {
+    width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  /* Flexibiliza os Gráficos e Artigos */
+  section[style*="padding: '40px'"], 
+  section[style*="padding: '50px 40px'"] {
+    padding: 15px 10px !important;
+  }
+}

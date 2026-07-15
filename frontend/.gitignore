@@ -1,0 +1,56 @@
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+node_modules
+dist
+dist-ssr
+*.local
+
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Ambientes virtuais (muito pesados, não devem subir)
+venv/
+.venv/
+env/
+
+# Arquivos de configuração e chaves secretas
+.env
+db.sqlite3
+
+# Arquivos temporários do Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.pytest_cache/
+
+node_modules/
+
+# Pastas de build/distribuição
+dist/
+build/
+
+# Logs de erro do npm
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Variáveis de ambiente locais
+.env.local
+.env.development.local
+.env.production.local

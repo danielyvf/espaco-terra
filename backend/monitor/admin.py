@@ -1,0 +1,1 @@
+# Configuração do painel administrativo do Django
