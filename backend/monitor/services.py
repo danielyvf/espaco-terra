@@ -3,6 +3,7 @@
 import requests
 from datetime import datetime
 from .models import DesastreNatural, EventoSolar
+from django.utils import timezone
 
 def atualizar_terremotos():
     """Busca os terremotos das últimas 24 horas na API do USGS e salva no banco de dados"""
@@ -31,7 +32,8 @@ def atualizar_terremotos():
             
             # A API envia o tempo em 'Timestamp milissegundos'. Converte para Data/Hora real:
             timestamp_segundos = propriedades['time'] / 1000
-            data_hora_real = datetime.fromtimestamp(timestamp_segundos)
+            # Converte o timestamp garantindo que a data seja gerada com fuso horário (geralmente UTC)
+            data_hora_real = timezone.make_aware(datetime.fromtimestamp(timestamp_segundos))
             
             longitude = geometria['coordinates'][0]
             latitude = geometria['coordinates'][1]
@@ -80,7 +82,8 @@ def atualizar_dados_solares():
             kp_estimado = float(relatorio_atual.get('Geomagnetic', {}).get('Kp', 0.0))
             descricao_alerta = relatorio_atual.get('Geomagnetic', {}).get('Text', '')
             
-            data_hora_real = datetime.now() # Registra o momento da captura atual
+            # Gera a data/hora atual já com a informação do fuso horário correto
+            data_hora_real = timezone.now() # Registra o momento da captura atual
             
             # Evita salvar duplicados no mesmo minuto
             ja_existe = EventoSolar.objects.filter(
