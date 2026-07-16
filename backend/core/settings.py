@@ -12,7 +12,7 @@ DEBUG = os.getenv('DEBUG', 'False') == 'True'
 
 # Define quem pode acessar o servidor localmente
 # Permite rodar localmente e também no endereço que o Render vai dar
-ALLOWED_HOSTS = ['espaco-terra.onrender.com', 'localhost', '127.0.0.1']
+ALLOWED_HOSTS = ['espaco-terra.onrender.com']
 
 # Configuração padrão do Banco de Dados (SQLite)
 DATABASES = {
@@ -71,7 +71,7 @@ INSTALLED_APPS = [
 # Configuração obrigatória para o Django gerenciar arquivos estáticos (CSS, JS)
 STATIC_URL = 'static/'
 
-# Permite que o React acesse o Django durante o desenvolvimento local
+# servidor do render
 CORS_ALLOWED_ORIGINS = [
-    "https://espaco-terra-m69d.vercel.app/",
+    "https://espaco-terra-m69d.vercel.app",
     ]
