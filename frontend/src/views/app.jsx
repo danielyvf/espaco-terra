@@ -9,17 +9,21 @@ export default function DashboardPrincipal() {
   const [coordenadaClicada, setCoordenadaClicada] = useState(null);
 
   // (Axios) vai buscar os dados no Django assim que a tela carrega
-  useEffect(() => {
-    axios.get('http://localhost:8000/api/dados-cruzados/')
-      .then(resposta => {
-        // Guarda os dados reais do Django nos estados do React
-        setDadosSolares(resposta.data.dados_solares);
-        setDesastresNaturais(resposta.data.desastres_naturais);
-      })
-      .catch(erro => {
-        console.error("Erro ao conectar com o Django Back-end:", erro);
-      });
-  }, []);
+// 1. Defina o endereço da API de forma dinâmica (coloque isso na linha logo acima do useEffect)
+const API_URL = import.meta.env.VITE_API_URL || 'https://espaco-terra.onrender.com';
+
+// 2. Substitua o seu useEffect por este atualizado:
+useEffect(() => {
+  axios.get(`${API_URL}/api/dados-cruzados/`)
+    .then(resposta => {
+      // Guarda os dados reais do Django nos estados do React
+      setDadosSolares(resposta.data.dados_solares);
+      setDesastresNaturais(resposta.data.desastres_naturais);
+    })
+    .catch(erro => {
+      console.error("Erro ao conectar com o Django Back-end:", erro);
+    });
+}, []);
 
   // Função que roda quando o usuário clica em algum lugar do planeta 3D
   const gerenciarCliqueNoGlobo = (lat, lng) => {
