@@ -12,7 +12,7 @@ export default function DashboardContainer() {
   // 1. Cria um estado para controlar se a API terminou de carregar
   const [carregandoDados, setCarregandoDados] = useState(true);
 
-const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:8000';
+const API_URL = import.meta.env.VITE_API_URL || 'https://espaco-terra.onrender.com';
 
 useEffect(() => {
   // variável dinâmica:
