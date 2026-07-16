@@ -73,6 +73,6 @@ STATIC_URL = 'static/'
 
 # servidor do render
 CORS_ALLOWED_ORIGINS = [
-    "https://espaco-terra-m69d-danielyvfs-projects.vercel.app/",
-
+    "https://espaco-terra-m69d.vercel.app",
+    "https://espaco-terra-m69d-danielyvfs-projects.vercel.app"
     ]
