@@ -73,5 +73,5 @@ STATIC_URL = 'static/'
 
 # servidor do render
 CORS_ALLOWED_ORIGINS = [
-    "espaco-terra-five.vercel.app"
+    "https://espaco-terra-x5hi.vercel.app"
     ]
