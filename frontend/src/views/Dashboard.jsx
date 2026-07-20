@@ -15,15 +15,21 @@ export default function DashboardContainer() {
 const API_URL = import.meta.env.VITE_API_URL || 'https://espaco-terra.onrender.com';
 
 useEffect(() => {
-  // variável dinâmica:
-  axios.get(`${API_URL}/api/dados-cruzados/`)
-    .then(resposta => {
-      setDadosSolares(resposta.data.dados_solares || []);
-      setDesastresNaturais(resposta.data.desastres_naturais || []);
-    })
-}, []);
+    axios.get(`${API_URL}/api/dados-cruzados/`)
+      .then(resposta => {
+        setDadosSolares(resposta.data.dados_solares || []);
+        setDesastresNaturais(resposta.data.desastres_naturais || []);
+      })
+      .catch(erro => {
+        console.error("Erro ao carregar dados da API:", erro);
+      })
+      .finally(() => {
+        // CORREÇÃO: Libera a interface após o término da requisição
+        setCarregandoDados(false);
+      });
+  }, []);
 
-  // Se a API ainda estiver carregando (ou o Render estiver acordando), exibe a tela de loading
+  // Se a API ainda estiver carregando, exibe a tela de loading
   if (carregandoDados) {
     return <TelaCarregamento />;
   }
