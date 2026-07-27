@@ -7,12 +7,16 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 load_dotenv(os.path.join(BASE_DIR, '.env')) # carrega o arquivo .env
 
 # Agora o Django lê do arquivo oculto:
-SECRET_KEY = os.getenv('DJANGO_SECRET_KEY')
+SECRET_KEY = os.getenv('DJANGO_SECRET_KEY', 'chave-temporaria-para-o-render-nao-dar-erro-500')
 DEBUG = os.getenv('DEBUG', 'False') == 'True'
 
 # Define quem pode acessar o servidor localmente
 # Permite rodar localmente e também no endereço que o Render vai dar
-ALLOWED_HOSTS = ['espaco-terra.onrender.com']
+ALLOWED_HOSTS = ['espaco-terra.onrender.com',
+                 '.onrender.com',  # Aceita qualquer subdominio do Render
+                 'localhost',
+                 '127.0.0.1',
+    ]
 
 # Configuração padrão do Banco de Dados (SQLite)
 DATABASES = {
