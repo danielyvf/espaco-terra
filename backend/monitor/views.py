@@ -5,6 +5,7 @@ from rest_framework.response import Response
 from rest_framework import status
 from .models import EventoSolar, DesastreNatural
 from .serializers import EventoSolarSerializer, DesastreNaturalSerializer
+from .services import atualizar_terremotos, atualizar_dados_solares
 
 # 👉 ESSA LINHA É FUNDAMENTAL: Importa os scripts que buscam os dados na NASA/USGS
 from .services import atualizar_terremotos, atualizar_dados_solares
