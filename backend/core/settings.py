@@ -71,7 +71,9 @@ INSTALLED_APPS = [
 # Configuração obrigatória para o Django gerenciar arquivos estáticos (CSS, JS)
 STATIC_URL = 'static/'
 
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
 # servidor do render
 CORS_ALLOWED_ORIGINS = [
-    "https://espaco-terra-x5hi.vercel.app"
+    'https://espaco-terra-x5hi.vercel.app'
     ]
