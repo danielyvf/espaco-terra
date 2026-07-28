@@ -6,7 +6,7 @@ import { ResponsiveContainer, ComposedChart, Line, Bar, XAxis, YAxis, Tooltip, L
 import sol1 from '../assets/img/sol1.jpg';
 import '../components/responsivo.css';
 
-export default function DashboardContainer() {
+export default function Dashboard() {
   const [dadosSolares, setDadosSolares] = useState([]);
   const [desastresNaturais, setDesastresNaturais] = useState([]);
   const [carregandoDados, setCarregandoDados] = useState(true);
