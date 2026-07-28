@@ -1,9 +1,10 @@
-import Painel from './Painel.jsx'; // 👈 Importa o Painel aqui!
+import { StrictMode } from 'react'
+import { createRoot } from 'react-dom/client'
+import './index.css'
+import App from './App.jsx'
 
-export default function App() {
-  return (
-    <main>
-      <Painel /> 
-    </main>
-  );
-}
+createRoot(document.getElementById('root')).render(
+  <StrictMode>
+    <App />
+  </StrictMode>,
+)
