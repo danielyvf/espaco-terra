@@ -24,7 +24,6 @@ export default function Dashboard() {
         console.error("Erro ao carregar dados da API:", erro);
       })
       .finally(() => {
-        // CORREÇÃO: Libera a interface após o término da requisição
         setCarregandoDados(false);
       });
   }, []);
@@ -112,13 +111,12 @@ function TelaCarregamento() {
         width: '50px',
         height: '50px',
         border: '3px solid #2d2d2d',
-        borderTop: '3px solid #ffb703', // Cor dourada simulando o vento solar
+        borderTop: '3px solid #ffb703',
         borderRadius: '50%',
         animation: 'girar 1s linear infinite',
         marginBottom: '25px'
       }} />
 
-      {/* Estilo CSS injetado temporariamente para fazer o círculo girar */}
       <style>{`
         @keyframes girar {
           0% { transform: rotate(0deg); }
@@ -177,7 +175,7 @@ function TelaInicio({ dadosSolares, desastresNaturais }) {
           color: '#fff', 
           fontFamily: '"Syncopate", sans-serif',
           fontWeight: '300',
-          alignSelf: 'flex-start', 
+          alignSelf: 'left', 
           textAlign: 'left'
         }}>
           Sistema de Análise <br/>espaço-terra
@@ -252,7 +250,6 @@ function TelaGlobo({ dadosSolares, desastresNaturais }) {
   const [carregandoPais, setCarregandoPais] = useState(false);
   const [filtroPaisInput, setFiltroPaisInput] = useState("");
 
-  // Helper para remover acentos e maiúsculas permitindo busca inteligente global
   const normalizarTexto = (texto) => {
     if (!texto) return "";
     return texto.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").trim();
@@ -312,7 +309,6 @@ function TelaGlobo({ dadosSolares, desastresNaturais }) {
             <div style={{ display: 'flex', flexDirection: 'column', gap: '15px' , fontFamily: '"Roboto Mono", monospace',}}>
               <p style={{ margin: 0 }}>País Identificado: <strong style={{ color: '#fff', fontSize: '1.1rem' }}>{filtroPaisInput}</strong></p>
               
-              {/* Telemetria de Radiação / Vento Solar via Kp */}
               <div style={{ background: '#252525', padding: '12px', borderRadius: '6px', borderLeft: '4px solid #ffb703', fontFamily: '"Roboto Mono", monospace',}}>
                 <h4 style={{ margin: '0 0 5px 0', fontSize: '0.9rem', color: '#ffb703', fontFamily: '"Roboto Mono", monospace',}}>Incidência Geomagnética (Radiação)</h4>
                 <p style={{ margin: 0, fontSize: '0.85rem', color: '#ccc', fontFamily: '"Roboto Mono", monospace',}}>
@@ -321,7 +317,6 @@ function TelaGlobo({ dadosSolares, desastresNaturais }) {
                 </p>
               </div>
 
-              {/* Registro cumulativo de Eventos Sísmicos na área buscada */}
               <div style={{ background: '#252525', padding: '12px', borderRadius: '6px', borderLeft: '4px solid #00d2ff' }}>
                 <h4 style={{ margin: '0 0 5px 0', fontSize: '0.9rem', color: '#00d2ff' }}>Eventos Sísmicos Coletados</h4>
                 <p style={{ margin: 0, fontSize: '0.85rem', color: '#ccc' }}>
@@ -378,10 +373,8 @@ function TelaAnalises({ dadosSolares, desastresNaturais }) {
       <h2 style={{ color: '#fff', marginTop: 0, fontFamily: '"Prompt", sans-serif',}}>Análise de Impacto Geomagnetico</h2>
       <p style={{ color: '#aaa', marginBottom: '25px', fontSize: '0.95rem', fontFamily: '"Roboto Mono", monospace',}}>Cruzamento estatistico entre a magnitude dos abalos e o estresse solar acumulado nas horas anteriores.</p>
       
-      {/*CONTÊINER FLEXBOX PAI, COLOCA O GRÁFICO E A LEGENDA LADO A LADO E CENTRALIZADOS */}
       <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'center', alignItems: 'stretch', gap: '25px', width: '100%' }}>
         
-        {/* BLOCO DO GRÁFICO */}
         <div style={{ flex: 2, background: '#1e1e1e', padding: '20px', borderRadius: '12px', border: '1px solid #2d2d2d', height: '260px' }}>
           <ResponsiveContainer width="100%" height="100%">
             <ComposedChart data={dadosGrafico}>
@@ -397,7 +390,6 @@ function TelaAnalises({ dadosSolares, desastresNaturais }) {
           </ResponsiveContainer>
         </div>
 
-        {/* BLOCO DE LEGENDAS*/}
         <div style={{ flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'space-between', gap: '15px', background: '#0a0a0a', padding: '20px', borderRadius: '12px', border: '1px solid #2d2d2d' }}>
           <div>
             <h4 style={{ color: '#636E72', margin: '0 0 6px 0', fontSize: '0.9rem', fontFamily: '"Roboto Mono", monospace',}}> Magnitude (M)</h4>
@@ -430,10 +422,8 @@ function TelaArtigos() {
         Análise detalhada acerca dos impactos diretos das emissões e variações heliofísicas sobre a fisiologia cardiovascular humana e a dinâmica não-linear de falhas tectônicas na crosta terrestre.
       </p>
       
-      {/* CONTÊINER LAYOUT LADO A LADO */}
       <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'center', alignItems: 'stretch', gap: '30px', width: '100%' }}>
         
-        {/* TEXTO COLUNA 1: CORPO HUMANO */}
         <div style={{ flex: 1, background: '#1e1e1e', padding: '35px', borderRadius: '12px', border: '1px solid #2d2d2d', display: 'flex', flexDirection: 'column', gap: '18px', justifyContent: 'space-between' }}>
           <div>
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '15px' }}>
@@ -454,7 +444,6 @@ function TelaArtigos() {
             </p>
           </div>
 
-          {/* REFERÊNCIAS COLUNA 1 */}
           <div style={{ borderTop: '1px solid #333', paddingTop: '15px', marginTop: '10px' }}>
             <h4 style={{ color: '#2A353A', margin: '0 0 8px 0', fontSize: '0.85rem', letterSpacing: '0.5px' }}>REFERÊNCIAS BIBLIOGRÁFICAS</h4>
             <p style={{ margin: '0 0 6px 0', fontSize: '0.78rem', color: '#aaa', lineHeight: '1.4', fontFamily: '"Roboto Mono", monospace',}}>
@@ -466,7 +455,6 @@ function TelaArtigos() {
           </div>
         </div>
 
-        {/* GATILHOS GEOLÓGICOS */}
         <div style={{ flex: 1, background: '#1e1e1e', padding: '35px', borderRadius: '12px', border: '1px solid #2d2d2d', display: 'flex', flexDirection: 'column', gap: '18px', justifyContent: 'space-between', fontFamily: '"Roboto Mono", monospace',}}>
           <div>
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '15px' }}>
@@ -487,7 +475,6 @@ function TelaArtigos() {
             </p>
           </div>
 
-          {/* REFERÊNCIAS COLUNA 2 */}
           <div style={{ borderTop: '1px solid #333', paddingTop: '15px', marginTop: '10px' }}>
             <h4 style={{ color: '#3A322A', margin: '0 0 8px 0', fontSize: '0.85rem', letterSpacing: '0.5px' }}>REFERÊNCIAS BIBLIOGRÁFICAS</h4>
             <p style={{ margin: '0 0 6px 0', fontSize: '0.78rem', color: '#aaa', lineHeight: '1.4' }}>
@@ -504,7 +491,6 @@ function TelaArtigos() {
   );
 }
 
-// ESTILOS GLOBAIS REUTILIZADOS
 const estiloLinkMenu = {
   color: '#aaa',
   textDecoration: 'none',
