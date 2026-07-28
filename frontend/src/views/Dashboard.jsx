@@ -24,17 +24,17 @@ export default function Dashboard() {
         console.error("Erro ao carregar dados da API:", erro);
       })
       .finally(() => {
-        // CORREÇÃO: Libera a interface após o término da requisição
+        // Libera a interface após o término da requisição
         setCarregandoDados(false);
       });
-  }, []);
+  }, [API_URL]);
 
   // Se a API ainda estiver carregando, exibe a tela de loading
   if (carregandoDados) {
     return <TelaCarregamento />;
   }
 
-  // DASHBOARDBOARD CONTAINER 
+  // DASHBOARD CONTAINER 
   return (
     <div style={{ minHeight: '100vh', width: '100vw', backgroundColor: '#000', color: '#fff', fontFamily: 'Segoe UI, sans-serif', margin: 0, padding: 0, overflowX: 'hidden' }}>
       
@@ -110,7 +110,7 @@ function TelaCarregamento() {
         width: '50px',
         height: '50px',
         border: '3px solid #2d2d2d',
-        borderTop: '3px solid #ffb703', // Cor dourada simulando o vento solar
+        borderTop: '3px solid #ffb703', 
         borderRadius: '50%',
         animation: 'girar 1s linear infinite',
         marginBottom: '25px'
@@ -175,7 +175,7 @@ function TelaInicio({ dadosSolares, desastresNaturais }) {
           color: '#fff', 
           fontFamily: '"Syncopate", sans-serif',
           fontWeight: '300',
-          alignSelf: 'left', 
+          alignSelf: 'flex-start', 
           textAlign: 'left'
         }}>
           Sistema de Análise <br/>espaço-terra
