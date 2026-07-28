@@ -170,12 +170,11 @@ function TelaInicio({ dadosSolares, desastresNaturais }) {
         position: 'relative'
       }}>
         <h1 style={{ 
-          fontSize: '2.5rem', 
+          fontSize: '3rem', 
           margin: '100px 0px 0px 0px', 
           color: '#fff', 
           fontFamily: '"Syncopate", sans-serif',
           fontWeight: '300',
-          alignSelf: 'flex-start', 
           textAlign: 'left'
         }}>
           Sistema de Análise <br/>espaço-terra
@@ -184,7 +183,7 @@ function TelaInicio({ dadosSolares, desastresNaturais }) {
         <div style={{ display: 'flex', flexDirection: 'column', alignSelf: 'center', alignItems: 'center', width: '100%' }}>
           <h2 style={{
             position: 'absolute',
-            top: '35%',
+            top: '45%',
             left: '72%',
             fontSize: '0.9rem',
             color: '#fff', 
