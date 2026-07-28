@@ -24,7 +24,7 @@ useEffect(() => {
         console.error("Erro ao carregar dados da API:", erro);
       })
       .finally(() => {
-        // Libera a interface após o término da requisição
+        // CORREÇÃO: Libera a interface após o término da requisição
         setCarregandoDados(false);
       });
   }, []);
