@@ -223,7 +223,7 @@ function TelaInicio({ dadosSolares, desastresNaturais }) {
         borderBottom: '1px solid #2d2d2d'
       }}>
         <div style={{ background: 'rgba(0,0,0,0.7)', padding: '20px 40px', borderRadius: '8px', backdropFilter: 'blur(3px)', border: '1px solid #333' }}>
-          <h2 style={{ fontSize: '1.6rem', margin: '0 0 5x 0', color: '#fff', fontWeight: '300', fontFamily: '"Prompt", sans-serif',}}>A Litosfera em Observação</h2>
+          <h2 style={{ fontSize: '1.6rem', margin: '0 0 5px 0', color: '#fff', fontWeight: '300', fontFamily: '"Prompt", sans-serif',}}>A Litosfera em Observação</h2>
           <p style={{ color: '#ccc', maxWidth: '600px', margin: 0, fontSize: '0.95rem', fontFamily: '"Roboto Mono", monospace',}}>
             Explore abaixo a distribuição geomagnética e os eventos sísmicos ativos mapeados diretamente sobre a malha planetária.
           </p>
@@ -231,7 +231,7 @@ function TelaInicio({ dadosSolares, desastresNaturais }) {
       </section>
 
       {/* SEÇÃO DO GLOBO */}
-      <TelaGlobo dadosSolares={dadosSolares} desacresNaturais={desastresNaturais} desastresNaturais={desastresNaturais} />
+      <TelaGlobo dadosSolares={dadosSolares} desastresNaturais={desastresNaturais} desastresNaturais={desastresNaturais} />
 
       {/* SEÇÃO COMPLEMENTAR: ANÁLISES (Gráficos integrados na rolagem) */}
       <div style={{ background: '#000', borderTop: '1px solid #2d2d2d' }}>
@@ -285,7 +285,7 @@ function TelaGlobo({ dadosSolares, desastresNaturais }) {
   return (
     <section style={{ padding: '40px', display: 'flex', gap: '25px', boxSizing: 'border-box', background: '#000', maxWidth: '1200px', margin: '0 auto', justifyContent:'center'}}>
       <div style={{ flex: 1, background: '#000', borderRadius: '12px', border: '1px solid #2d2d2d', minHeight: '500px', display: 'flex', justifyContent: 'center', alignItems: 'center', overflow: 'hidden' }}>
-        <Globo3D dadosSolares={dadosSolares} desacresNaturais={terremotosFiltrados} desastresNaturais={terremotosFiltrados} aoClicarNoPais={gerenciarCliqueNoGlobo} />
+        <Globo3D dadosSolares={dadosSolares} desastresNaturais={terremotosFiltrados} desastresNaturais={terremotosFiltrados} aoClicarNoPais={gerenciarCliqueNoGlobo} />
       </div>
       <div style={{ width: '380px', background: '#1e1e1e', padding: '25px', borderRadius: '12px', border: '1px solid #2d2d2d', display: 'flex', flexDirection: 'column', gap: '20px' }}>
         <div>
@@ -355,8 +355,8 @@ function TelaGlobo({ dadosSolares, desastresNaturais }) {
   );
 }
 
-function TelaAnalises({ dadosSolares, desacresNaturais, desabrasNaturais, desastresNaturais }) {
-  const listaTerremotos = desastresNaturais || desacresNaturais || [];
+function TelaAnalises({ dadosSolares, desastresNaturais, desastresNaturais, desastresNaturais }) {
+  const listaTerremotos = desastresNaturais || desastresNaturais || [];
 
   const calcularKpPrecedente = (dataTerremotoStr) => {
     const dataTerremoto = new Date(dataTerremotoStr);
