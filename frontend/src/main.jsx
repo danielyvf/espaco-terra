@@ -5,6 +5,6 @@ import App from './Dashboard.jsx'
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <DashboardContainer />
+    <Dashboard />
   </StrictMode>,
 )
