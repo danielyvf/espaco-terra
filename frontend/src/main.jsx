@@ -1,10 +1,9 @@
-import { StrictMode } from 'react'
-import { createRoot } from 'react-dom/client'
-import './index.css'
-import App from './Dashboard.jsx'
+import Painel from './Painel.jsx'; // 👈 Importa o Painel aqui!
 
-createRoot(document.getElementById('root')).render(
-  <StrictMode>
-    <Dashboard />
-  </StrictMode>,
-)
+export default function App() {
+  return (
+    <main>
+      <Painel /> 
+    </main>
+  );
+}
