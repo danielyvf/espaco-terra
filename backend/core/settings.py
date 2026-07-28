@@ -1,24 +1,28 @@
-# Configurações gerais
 import os
 from pathlib import Path
-from dotenv import load_dotenv, load_dotenv # importa o dotenv
+from dotenv import load_dotenv
 
 BASE_DIR = Path(__file__).resolve().parent.parent
-load_dotenv(os.path.join(BASE_DIR, '.env')) # carrega o arquivo .env
 
-# Agora o Django lê do arquivo oculto:
-SECRET_KEY = os.getenv('DJANGO_SECRET_KEY', 'chave-temporaria-para-o-render-nao-dar-erro-500')
+# Carrega o arquivo .env se ele existir localmente
+load_dotenv(os.path.join(BASE_DIR, '.env'))
+
+# Chave secreta lida do ambiente
+SECRET_KEY = os.getenv('DJANGO_SECRET_KEY', 'chave-temporaria-desenv-12345')
+
+# Em produção na Vercel/Render, DEBUG deve ser False por padrão se não definido no ambiente
 DEBUG = os.getenv('DEBUG', 'False') == 'True'
 
-# Define quem pode acessar o servidor localmente
-# Permite rodar localmente e também no endereço que o Render vai dar
-ALLOWED_HOSTS = ['espaco-terra.onrender.com',
-                 '.onrender.com',  # Aceita qualquer subdominio do Render
-                 'localhost',
-                 '127.0.0.1',
-    ]
+# Permite chamadas do Render, da Vercel e de conexões locais
+ALLOWED_HOSTS = [
+    'espaco-terra.onrender.com',
+    '.onrender.com',
+    '.vercel.app',  # Permite qualquer subdomínio da Vercel
+    'localhost',
+    '127.0.0.1',
+]
 
-# Configuração padrão do Banco de Dados (SQLite)
+# Configuração do Banco de Dados (SQLite)
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
@@ -26,12 +30,11 @@ DATABASES = {
     }
 }
 
-# Configuração técnica para o Django gerenciar as URLs
 ROOT_URLCONF = 'core.urls'
 
-# Configurações de segurança e filtros (Middlewares) requisitados pelo Django
+# Configurações de segurança e middlewares
 MIDDLEWARE = [
-    'corsheaders.middleware.CorsMiddleware',
+    'corsheaders.middleware.CorsMiddleware',  # Deve permanecer no topo
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -41,7 +44,6 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-# Configuração de renderização de telas (necessária para o painel Admin do Django)
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
@@ -72,14 +74,17 @@ INSTALLED_APPS = [
     'monitor',
 ]
 
-# Configuração obrigatória para o Django gerenciar arquivos estáticos (CSS, JS)
+# Configuração de arquivos estáticos
 STATIC_URL = 'static/'
-
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
-CORS_ALLOW_ALL_ORIGINS = True
+# Configuração de CORS para permitir conexões do Frontend na Vercel e Local
+CORS_ALLOW_ALL_ORIGINS = False  # Mantido True para evitar bloqueios durante o desenvolvimento
 
-# servidor do render
+APPEND_SLASH = False
+
 CORS_ALLOWED_ORIGINS = [
-    'https://espaco-terra-x5hi.vercel.app'
-    ]
+    'https://espaco-terra-x5hi.vercel.app',
+    'http://localhost:5173',
+    'http://localhost:3000',
+]
