@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { Globo3D } from './components/Globo3D'; // Importa o globo
+import { Globo3D } from '../components/Globo3D'; // Importa o globo
 
 export default function DashboardPrincipal() {
   // Estados para guardar os dados que vêm do Django
