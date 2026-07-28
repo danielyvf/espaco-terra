@@ -12,9 +12,9 @@ export default function Dashboard() {
   // Cria um estado para controlar se a API terminou de carregar
   const [carregandoDados, setCarregandoDados] = useState(true);
 
-const API_URL = import.meta.env.VITE_API_URL || 'https://espaco-terra.onrender.com';
+  const API_URL = import.meta.env.VITE_API_URL || 'https://espaco-terra.onrender.com';
 
-useEffect(() => {
+  useEffect(() => {
     axios.get(`${API_URL}/api/dados-cruzados/`)
       .then(resposta => {
         setDadosSolares(resposta.data.dados_solares || []);
@@ -34,7 +34,7 @@ useEffect(() => {
     return <TelaCarregamento />;
   }
 
-  // DASHBOARDBOARD CONTAINER 
+  // DASHBOARD CONTAINER 
   return (
     <Router>
       <div style={{ minHeight: '100vh', width: '100vw', backgroundColor: '#000', color: '#fff', fontFamily: 'Segoe UI, sans-serif', margin: 0, padding: 0, overflowX: 'hidden' }}>
@@ -177,7 +177,7 @@ function TelaInicio({ dadosSolares, desastresNaturais }) {
           color: '#fff', 
           fontFamily: '"Syncopate", sans-serif',
           fontWeight: '300',
-          alignSelf: 'left', 
+          alignSelf: 'flex-start', 
           textAlign: 'left'
         }}>
           Sistema de Análise <br/>espaço-terra
@@ -231,7 +231,7 @@ function TelaInicio({ dadosSolares, desastresNaturais }) {
       </section>
 
       {/* SEÇÃO DO GLOBO */}
-      <TelaGlobo dadosSolares={dadosSolares} desastresNaturais={desastresNaturais} desastresNaturais={desastresNaturais} />
+      <TelaGlobo dadosSolares={dadosSolares} desastresNaturais={desastresNaturais} />
 
       {/* SEÇÃO COMPLEMENTAR: ANÁLISES (Gráficos integrados na rolagem) */}
       <div style={{ background: '#000', borderTop: '1px solid #2d2d2d' }}>
@@ -252,7 +252,7 @@ function TelaGlobo({ dadosSolares, desastresNaturais }) {
   const [carregandoPais, setCarregandoPais] = useState(false);
   const [filtroPaisInput, setFiltroPaisInput] = useState("");
 
-  // Helper para remover acentos e maiúsculas permitindo busca inteligente global // já que a api está com os dados apenas em inglês
+  // Helper para remover acentos e maiúsculas permitindo busca inteligente global
   const normalizarTexto = (texto) => {
     if (!texto) return "";
     return texto.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").trim();
@@ -285,7 +285,7 @@ function TelaGlobo({ dadosSolares, desastresNaturais }) {
   return (
     <section style={{ padding: '40px', display: 'flex', gap: '25px', boxSizing: 'border-box', background: '#000', maxWidth: '1200px', margin: '0 auto', justifyContent:'center'}}>
       <div style={{ flex: 1, background: '#000', borderRadius: '12px', border: '1px solid #2d2d2d', minHeight: '500px', display: 'flex', justifyContent: 'center', alignItems: 'center', overflow: 'hidden' }}>
-        <Globo3D dadosSolares={dadosSolares} desastresNaturais={terremotosFiltrados} desastresNaturais={terremotosFiltrados} aoClicarNoPais={gerenciarCliqueNoGlobo} />
+        <Globo3D dadosSolares={dadosSolares} desastresNaturais={terremotosFiltrados} aoClicarNoPais={gerenciarCliqueNoGlobo} />
       </div>
       <div style={{ width: '380px', background: '#1e1e1e', padding: '25px', borderRadius: '12px', border: '1px solid #2d2d2d', display: 'flex', flexDirection: 'column', gap: '20px' }}>
         <div>
@@ -355,8 +355,8 @@ function TelaGlobo({ dadosSolares, desastresNaturais }) {
   );
 }
 
-function TelaAnalises({ dadosSolares, desastresNaturais, desastresNaturais, desastresNaturais }) {
-  const listaTerremotos = desastresNaturais || desastresNaturais || [];
+function TelaAnalises({ dadosSolares, desastresNaturais }) {
+  const listaTerremotos = desastresNaturais || [];
 
   const calcularKpPrecedente = (dataTerremotoStr) => {
     const dataTerremoto = new Date(dataTerremotoStr);
@@ -466,7 +466,7 @@ function TelaArtigos() {
           </div>
         </div>
 
-        {/*GATILHOS GEOLÓGICOS */}
+        {/* GATILHOS GEOLÓGICOS */}
         <div style={{ flex: 1, background: '#1e1e1e', padding: '35px', borderRadius: '12px', border: '1px solid #2d2d2d', display: 'flex', flexDirection: 'column', gap: '18px', justifyContent: 'space-between', fontFamily: '"Roboto Mono", monospace',}}>
           <div>
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '15px' }}>
@@ -475,7 +475,7 @@ function TelaArtigos() {
             </div>
             
             <p style={{ margin: '0 0 15px 0', color: '#ccc', lineHeight: '1.7', fontSize: '0.95rem', textAlign: 'justify' }}>
-              No âmbito da geofísica pura, um estudo de fronteira publicado na conceituada revista científica <em>Chaos: An Interdisciplinary Journal of Nonlinear Science</em> propôs solucionar um dos maiores enigmas da geologia moderna: o gatilho inicial que desencadeia terremotos em falhas tectônicas já tensionadas. Utilizando métodos de análise de dados massivos e models computacionais avançados de dinâmica não-linear, pesquisadores demonstraram uma sólida correlação entre os ciclos solares de longo período e a atividade sísmica do planeta.
+              No âmbito da geofísica pura, um estudo de fronteira publicado na conceituada revista científica <em>Chaos: An Interdisciplinary Journal of Nonlinear Science</em> propôs solucionar um dos maiores enigmas da geologia moderna: o gatilho inicial que desencadeia terremotos em falhas tectônicas já tensionadas. Utilizando métodos de análise de dados massivos e modelos computacionais avançados de dinâmica não-linear, pesquisadores demonstraram uma sólida correlação entre os ciclos solares de longo período e a atividade sísmica do planeta.
             </p>
             
             <p style={{ margin: '0 0 15px 0', color: '#b5b5b5', lineHeight: '1.7', fontSize: '0.95rem', textAlign: 'justify' }}>
