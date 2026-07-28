@@ -77,6 +77,8 @@ STATIC_URL = 'static/'
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
+CORS_ALLOW_ALL_ORIGINS = True
+
 # servidor do render
 CORS_ALLOWED_ORIGINS = [
     'https://espaco-terra-x5hi.vercel.app'
